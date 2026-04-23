@@ -1,89 +1,82 @@
-# 🔄 Universal Shift Register (4-bit) – Verilog
+# 🔄 Universal Shift Register (4-bit) – Verilog HDL
 
-## 📌 Overview
+## 📌 Project Overview
 This project implements a **4-bit Universal Shift Register** using Verilog HDL.  
-It supports multiple operations like:
+A universal shift register is a versatile digital circuit capable of performing multiple operations such as:
 
-- Parallel Load  
-- Shift Left  
-- Shift Right  
-- Hold  
+- Parallel Data Loading  
+- Shift Left Operation  
+- Shift Right Operation  
+- Data Hold  
 
-The design is simulated using **ModelSim** and synthesized in **Intel Quartus Prime**.
+The design is **simulated in ModelSim** and **synthesized using Intel Quartus Prime**, with RTL (Register Transfer Level) verification.
 
 ---
 
-## ⚙️ Features
-- 4-bit input and output  
-- Supports shift left & right  
-- Parallel load operation  
-- Reset functionality  
-- RTL (Register Transfer Level) design  
-- Verified using simulation waveform  
+## ⚙️ Key Features
+- 4-bit register design  
+- Supports multiple modes of operation  
+- Synchronous with clock signal  
+- Asynchronous reset functionality  
+- RTL schematic generation  
+- Functional simulation waveform verification  
 
 ---
 
 ## 🧩 Module Description
 
-### Inputs:
+### 🔹 Inputs
 - `clk` → Clock signal  
-- `reset` → Reset signal  
-- `load` → Parallel load enable  
-- `shift_left` → Shift left control  
-- `shift_right` → Shift right control  
-- `data_in[3:0]` → Parallel input  
-- `serial_in` → Serial input  
+- `reset` → Asynchronous reset  
+- `load` → Enables parallel loading  
+- `shift_left` → Enables left shift  
+- `shift_right` → Enables right shift  
+- `data_in[3:0]` → 4-bit parallel input  
+- `serial_in` → Serial data input  
 
-### Output:
-- `data_out[3:0]` → Register output  
+### 🔹 Output
+- `data_out[3:0]` → 4-bit register output  
 
 ---
 
-## 🔁 Working
-- On reset → Output becomes `0000`  
-- On load → Parallel data is loaded  
-- On shift_left → Bits shift left, serial_in enters LSB  
-- On shift_right → Bits shift right, serial_in enters MSB  
-- Otherwise → Holds value  
+## 🔁 Working Principle
+On every rising edge of the clock:
+
+- If `reset = 1` → Output is cleared (`0000`)  
+- If `load = 1` → Parallel input is loaded into register  
+- If `shift_left = 1` → Data shifts left and `serial_in` enters LSB  
+- If `shift_right = 1` → Data shifts right and `serial_in` enters MSB  
+- Otherwise → Register holds its previous value  
 
 ---
 
 ## 🧪 Simulation Waveform
 
-![Waveform](./waveform.png)
+![Simulation Waveform](./waveform.png)
 
-👉 Shows correct shifting and loading operations  
-👉 Clock-driven behavior is verified  
+### ✔️ Observation
+- Shows correct sequential operation of register  
+- Confirms proper working of clock and control signals  
+- Data transitions are synchronized with clock  
 
 ---
 
-## 🧱 RTL / Netlist View
+## 🧱 RTL / Netlist Diagram
 
 ![RTL Diagram](./netlist.png)
 
-👉 Shows flip-flops and multiplexer structure  
-👉 Represents hardware-level implementation  
+### ✔️ Observation
+- Flip-flops used for storage  
+- Multiplexer selects operation (load/shift)  
+- Represents actual hardware implementation  
 
 ---
 
-## 🛠️ Tools Used
-- ModelSim (Intel FPGA Starter Edition 10.5b)  
-- Intel Quartus Prime Lite  
-- Verilog HDL  
+## 🛠️ Tools & Technologies
+- **Verilog HDL**  
+- **ModelSim (Intel FPGA Starter Edition 10.5b)**  
+- **Intel Quartus Prime Lite**  
 
 ---
 
-## 📂 Files Included
-- `sh.v` → Universal Shift Register  
-- `sh_tb.v` → Testbench  
-- `waveform.png` → Simulation output  
-- `netlist.png` → RTL schematic  
-
----
-
-## 🚀 How to Run
-
-1. Open ModelSim  
-2. Compile:
-   ```bash
-   vlog sh.v sh_tb.v
+## 📂 Project Structure
