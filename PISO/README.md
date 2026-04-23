@@ -1,4 +1,4 @@
-# 4_bit_Shift_Register
+# SIPO_4_bit_Shift_Register
 
 ## 👨‍🎓 Student Details
 
