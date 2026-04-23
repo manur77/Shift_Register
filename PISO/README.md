@@ -94,4 +94,4 @@ The project successfully demonstrates the working of a 4-bit shift register with
 * README.md → Documentation
 
 ![Netlist](netlist.png)
-![Waveform](waveform1(1).png)
+![Waveform](waveform1 (1).png)
